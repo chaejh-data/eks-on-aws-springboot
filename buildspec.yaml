@@ -13,9 +13,9 @@ phases:
       - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/
   build:
     commands:
-#      - ./gradlew bootjar
-#      - BOOT_JAR=`ls build/libs/*.jar`
-#      - echo $BOOT_JAR
+      - ./gradlew bootjar
+      - BOOT_JAR=`ls build/libs/*.jar`
+      - echo $BOOT_JAR
       - echo Building the Layered Docker Image with Gradlew
       - ./gradlew clean bootBuildImage | tee ./tmp
       - DOCKER_IMAGE_NAME=$(grep 'Building image' ./tmp | awk '{print $3}' | tr -d "'")
