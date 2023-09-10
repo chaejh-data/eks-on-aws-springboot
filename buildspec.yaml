@@ -23,6 +23,7 @@ phases:
       - echo .....$DOCKER_IMAGE_NAME
       - echo .....$DOCKER_IMAGE_TAG
 # Building image 'docker.io/library/shop:0.0.1-SNAPSHOT'
+      - docker images
       - docker tag $DOCKER_IMAGE_NAME $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$IMAGE_REPO_NAME:$DOCKER_IMAGE_TAG
       - docker tag $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$IMAGE_REPO_NAME:$DOCKER_IMAGE_TAG $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
       - docker push --all-tags $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$IMAGE_REPO_NAME
