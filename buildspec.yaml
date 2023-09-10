@@ -22,6 +22,7 @@ phases:
       - DOCKER_IMAGE_TAG=$(echo $DOCKER_IMAGE_NAME | awk -F ':' '{print $2}')
       - echo .....$DOCKER_IMAGE_NAME
       - echo .....$DOCKER_IMAGE_TAG
+      - ./gradlew clean bootBuildImage
 # Building image 'docker.io/library/shop:0.0.1-SNAPSHOT'
       - docker images
       - docker tag $DOCKER_IMAGE_NAME $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$IMAGE_REPO_NAME:$DOCKER_IMAGE_TAG
