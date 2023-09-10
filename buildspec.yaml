@@ -18,9 +18,10 @@ phases:
       - echo $BOOT_JAR
       - echo Building the Layered Docker Image with Gradlew
       - ./gradlew clean bootBuildImage | tee ./tmp
-      - grep 'Building image' ./tmp
+      - TEST=$(grep 'Building image' ./tmp)
       - DOCKER_IMAGE_NAME=$(grep 'Building image' ./tmp | awk '{print $3}' | tr -d "'")
       - DOCKER_IMAGE_TAG=$(echo $DOCKER_IMAGE_NAME | awk -F ':' '{print $2}')
+      - echo .....$TEST
       - echo .....$DOCKER_IMAGE_NAME
       - echo .....$DOCKER_IMAGE_TAG
 # Building image 'docker.io/library/shop:0.0.1-SNAPSHOT'
