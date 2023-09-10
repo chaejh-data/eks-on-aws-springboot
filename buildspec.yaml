@@ -18,7 +18,6 @@ phases:
       - echo $BOOT_JAR
       - echo Building the Layered Docker Image with Gradlew
       - ./gradlew clean bootBuildImage | tee ./tmp
-      - TEST=$(./tmp)
       - DOCKER_IMAGE_NAME=$(grep 'Building image' ./tmp | awk '{print $3}' | tr -d "'")
       - DOCKER_IMAGE_TAG=$(echo $DOCKER_IMAGE_NAME | awk -F ':' '{print $2}')
       - echo .....$TEST
